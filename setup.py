@@ -9,6 +9,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        hello=hello_python_click.hello:hello
+        hello=hello_python_click.hello_cli:hello
     ''',
 )

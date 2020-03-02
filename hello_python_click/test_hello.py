@@ -1,10 +1,23 @@
-import subprocess
-import re
-
-import pytest
+from .hello import Hello
 
 
-def test_help():
-    rc, out = subprocess.getstatusoutput('hello --help')
-    assert re.match('Usage', out)
-    assert rc == 0
+def test_hello_noname():
+    h = Hello()
+    assert h.hello() == 'Hello '
+
+
+def test_hello_name():
+    h = Hello('Mike')
+    assert h.hello() == 'Hello Mike'
+
+
+def test_hello_with_title():
+    h = Hello('Mike')
+    h.title = 'Mr.'
+    assert h.hello() == 'Hello Mr. Mike'
+
+
+def test_transform():
+    h = Hello('Mike')
+    h.title = 'Mr.'
+    assert h.transform() == 'hello mr. mike'

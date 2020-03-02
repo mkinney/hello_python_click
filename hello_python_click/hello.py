@@ -1,10 +1,20 @@
-import click
+from .utils import lower
 
 
-@click.command()
-def hello():
-    click.echo('Hello World!')
+class Hello():
 
+    def __init__(self, name=''):
+        if name is None:
+            name = ''
+        self.name = name
+        self.title = ''
 
-if __name__ == '__main__':
-    hello()
+    def hello(self):
+        title = ''
+        if self.title:
+            title = '{} '.format(self.title)
+        return 'Hello {}{}'.format(title, self.name)
+
+    def transform(self):
+        """Silly example on how to call function from another file."""
+        return lower(self.hello())
