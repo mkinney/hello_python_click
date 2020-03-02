@@ -2,3 +2,6 @@
 *.pyc
 .*swp
 venv/
+hello_python_click.egg-info
+__pycache__/
+.pycache/
