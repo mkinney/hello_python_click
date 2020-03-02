@@ -3,6 +3,7 @@ import click
 
 from .hello import Hello
 
+# for short and long help options
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 
@@ -12,6 +13,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 @click.option('--title', '-T', help='Use a title')
 @click.argument('name', required=False, default='World')
 def hello(debug, lower, title, name):
+    """Print out a greeting with various options."""
 
     if debug:
         click.echo('Debug:')

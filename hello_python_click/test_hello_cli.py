@@ -2,6 +2,12 @@ import subprocess
 import re
 
 
+from click.testing import CliRunner
+
+
+from .hello_cli import hello
+
+
 def test_help():
     rc, out = subprocess.getstatusoutput('hello --help')
     assert re.match('Usage', out)
@@ -38,3 +44,10 @@ def test_debug_long():
     assert rc == 0
     assert re.search('Hello World', out, re.MULTILINE)
     assert re.search('Debug', out, re.MULTILINE)
+
+
+def test_with_name_using_runner():
+    runner = CliRunner()
+    result = runner.invoke(hello, ['Mike'])
+    assert result.exit_code == 0
+    assert result.output == 'Hello Mike\n'
